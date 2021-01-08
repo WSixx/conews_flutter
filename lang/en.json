@@ -1,0 +1,19 @@
+{
+  "title_page" : "COVID-19 BRAZIL",
+  "total_cases" : "Total cases",
+  "total_deaths" : "Total deaths",
+  "total_recovered" : "Total recovered",
+  "new_case" : "New cases",
+  "new_deaths" : "New deaths",
+  "update" : "Update",
+  "charts" : "Charts",
+  "update_bottom" : "Update",
+  "title_chart" : "Cases: COVID-19",
+  "cases" : "Cases",
+  "chart_confirmed" : "Confirmed",
+  "chart_recovered" : "Recovered",
+  "chart_deaths" : "Deaths",
+  "click_open" : "Click to open",
+  "about" : "About"
+
+}

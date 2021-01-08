@@ -1,0 +1,47 @@
+name: conews_flutter
+description: Covid News.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+4
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  http: ^0.12.2
+  flutter_spinkit: ^4.1.2+1
+  fl_chart: ^0.12.2
+  charts_flutter: ^0.9.0
+  font_awesome_flutter: ^8.11.0
+  firebase_admob: ^0.10.3
+  bottom_navy_bar: ^5.6.0
+  shared_preferences: ^0.5.12+4
+  provider: ^4.3.2+3
+  intl: ^0.17.0-nullsafety.2
+
+dependency_overrides:
+  intl: ^0.17.0-nullsafety.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+
+flutter:
+
+  uses-material-design: true
+
+  assets:
+    - lang/en.json
+    - lang/pt.json
+
+  fonts:
+    - family: Open Sans
+      fonts:
+        - asset: fonts/OpenSans-Regular.ttf
+          weight: 400
