@@ -38,7 +38,7 @@ class _OtherCountriesState extends State<OtherCountries> {
         appBar: AppBar(),
         icone: FontAwesomeIcons.virus,
         title: 'COVID-19',
-        backgroundColor: Colors.red[800],
+        backgroundColor: Theme.of(context).primaryColor,
       ),
       body: ListView.builder(
         itemCount: 185,
@@ -58,7 +58,7 @@ class _OtherCountriesState extends State<OtherCountries> {
               children: [
                 Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
+                  children: [
                     Text(
                       takePais(index).country,
                       style: kNameCountryTextStyle12,

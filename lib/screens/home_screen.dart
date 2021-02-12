@@ -65,15 +65,17 @@ class _HomeScreenState extends State<HomeScreen> {
         selectedIndex: _selectedPage,
         itemCornerRadius: 8,
         curve: Curves.easeInBack,
-        onItemSelected: (int index) => setState(() {
-          _selectedPage = index;
-          _pageController.jumpToPage(index);
-        }),
+        onItemSelected: (int index) => setState(
+          () {
+            _selectedPage = index;
+            _pageController.jumpToPage(index);
+          },
+        ),
         items: [
           BottomNavyBarItem(
             icon: const Icon(FontAwesomeIcons.globe),
             title: const Text('Global'),
-            activeColor: Colors.red,
+            activeColor: Theme.of(context).primaryColor,
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(

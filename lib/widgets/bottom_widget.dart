@@ -1,4 +1,5 @@
 import 'package:conews_flutter/screens/chart_screen.dart';
+import 'package:conews_flutter/utilities/constants.dart';
 import 'package:conews_flutter/utilities/language_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -34,14 +35,17 @@ class _BottomWidgetCountryState extends State<BottomWidgetCountry> {
       children: [
         Text('${languages.newCases(context)}${': ${widget.newCases}'}'),
         Text('${languages.newDeaths(context)}${': ${widget.newDeaths}'}'),
+        const SizedBox(
+          height: 10,
+        ),
         SizedBox(
           width: double.infinity,
-          height: 45.0,
+          height: 60.0,
           child: OutlinedButton(
             style: OutlinedButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(18.0),
-                side: const BorderSide(color: Colors.white),
+              shape: kButtonOutlineShape,
+              textStyle: TextStyle(
+                color: Theme.of(context).textTheme.headline6.color,
               ),
             ),
             onPressed: () {
@@ -58,7 +62,7 @@ class _BottomWidgetCountryState extends State<BottomWidgetCountry> {
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
+              children: [
                 const Icon(
                   FontAwesomeIcons.chartBar,
                   color: Colors.lightBlueAccent,
@@ -68,7 +72,10 @@ class _BottomWidgetCountryState extends State<BottomWidgetCountry> {
                 ),
                 Text(
                   languages.charts(context),
-                  style: const TextStyle(fontSize: 20.0),
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Theme.of(context).textTheme.headline6.color,
+                  ),
                 ),
               ],
             ),

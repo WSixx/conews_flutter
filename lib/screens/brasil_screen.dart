@@ -44,7 +44,7 @@ class _BrazilState extends State<Brazil> {
         padding: const EdgeInsets.only(left: 18.0, right: 18.0, bottom: 32.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
+          children: [
             Text(getJsonApi.country),
             MyBox(
               title: languages.totalCases(context),
@@ -81,7 +81,9 @@ class _BrazilState extends State<Brazil> {
                   final apiData = await apiModel.getCountryLive2();
                   getJsonApi.updateUi2(apiData);
                 },
-                style: OutlinedButton.styleFrom(shape: kButtonOutlineShape),
+                style: OutlinedButton.styleFrom(
+                  shape: kButtonOutlineShape,
+                ),
                 child: rowOutlineButton(context),
               ),
             ),

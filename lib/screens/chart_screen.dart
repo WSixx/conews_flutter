@@ -178,8 +178,9 @@ class _ChartPageState extends State<ChartPage> {
                             defaultRenderer: charts.ArcRendererConfig(
                               arcRendererDecorators: [
                                 charts.ArcLabelDecorator(
-                                    labelPosition:
-                                        charts.ArcLabelPosition.outside),
+                                  labelPosition:
+                                      charts.ArcLabelPosition.outside,
+                                ),
                               ],
                             ),
                           ),

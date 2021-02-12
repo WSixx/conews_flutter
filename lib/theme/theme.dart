@@ -2,15 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 ThemeData light = ThemeData(
-    brightness: Brightness.light,
-    primarySwatch: Colors.indigo,
-    accentColor: Colors.pink,
-    scaffoldBackgroundColor: const Color(0xfff1f1ff));
+  brightness: Brightness.light,
+  primaryColor: Colors.red,
+  accentColor: Colors.pink,
+  scaffoldBackgroundColor: const Color(0xfff1f1ff),
+  textTheme: ThemeData.light().textTheme.copyWith(
+        headline6: const TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w700,
+          //fontFamily: 'RobotoCondensed',
+        ),
+      ),
+);
 
 ThemeData dark = ThemeData(
   brightness: Brightness.dark,
-  primarySwatch: Colors.indigo,
+  primaryColor: Colors.red,
   accentColor: Colors.pink,
+  textTheme: ThemeData.dark().textTheme.copyWith(
+        headline6: const TextStyle(
+          fontSize: 20, fontWeight: FontWeight.w700,
+          //fontFamily: 'RobotoCondensed',
+        ),
+      ),
 );
 
 class ThemeNotifier extends ChangeNotifier {

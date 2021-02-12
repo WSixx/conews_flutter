@@ -25,11 +25,15 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Text(
         title,
         textAlign: TextAlign.center,
+        style: TextStyle(color: Theme.of(context).textTheme.headline6.color),
       ),
       centerTitle: true,
       backgroundColor: backgroundColor,
-      actions: <Widget>[
-        const Icon(FontAwesomeIcons.lightbulb),
+      actions: [
+        Icon(
+          FontAwesomeIcons.lightbulb,
+          color: Theme.of(context).textTheme.headline6.color,
+        ),
         Consumer<ThemeNotifier>(
           builder: (context, notifier, child) => Switch(
             onChanged: (val) {

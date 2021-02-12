@@ -35,13 +35,13 @@ class _UsaState extends State<Usa> {
         appBar: AppBar(),
         icone: FontAwesomeIcons.virus,
         title: 'COVID-19 USA',
-        backgroundColor: Colors.red[800],
+        backgroundColor: Theme.of(context).primaryColor,
       ),
       body: Padding(
         padding: const EdgeInsets.only(left: 18.0, right: 18.0, bottom: 32.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
+          children: [
             Text(getJsonApi.country),
             MyBox(
               title: languages.totalCases(context),

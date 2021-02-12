@@ -5,8 +5,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 Widget rowOutlineButton(BuildContext context) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
-    children: <Widget>[
-     const  Icon(
+    children: [
+      const Icon(
         FontAwesomeIcons.circleNotch,
         color: Colors.lightBlueAccent,
       ),
@@ -15,7 +15,10 @@ Widget rowOutlineButton(BuildContext context) {
       ),
       Text(
         languages.update(context),
-        style: const TextStyle(fontSize: 20.0),
+        style: TextStyle(
+          fontSize: 20.0,
+          color: Theme.of(context).textTheme.headline6.color,
+        ),
       ),
     ],
   );

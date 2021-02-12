@@ -15,6 +15,9 @@ class MyBox extends StatelessWidget {
     return SizedBox(
       height: 90.0,
       child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15.0),
+        ),
         elevation: 5.0,
         child: ListTile(
           leading: Padding(
@@ -25,11 +28,20 @@ class MyBox extends StatelessWidget {
               color: color,
             ),
           ),
-          title: Text(
-            f.format(totalPassado),
-            style: const TextStyle(fontSize: 24.0),
+          title: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 18.0),
+            child: Text(
+              f.format(totalPassado),
+              style: TextStyle(
+                fontSize: 24.0,
+                color: Theme.of(context).textTheme.headline6.color,
+              ),
+            ),
           ),
-          subtitle: Text(title),
+          subtitle: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            child: Text(title),
+          ),
         ),
       ),
     );
