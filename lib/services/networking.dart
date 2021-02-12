@@ -8,16 +8,14 @@ class NetworkHelper {
   final String url;
 
   Future getData() async {
-    http.Response response = await http.get(url);
+    final http.Response response = await http.get(url);
 
     if (response.statusCode == 200) {
-      String data = response.body;
+      final String data = response.body;
       //print(data);
-      var decodedData = jsonDecode(data);
+      final decodedData = jsonDecode(data);
 
       return decodedData;
-    } else {
-      print(response.statusCode);
-    }
+    } else {}
   }
 }

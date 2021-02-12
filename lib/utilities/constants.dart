@@ -6,7 +6,7 @@ LanguagesHelper languages = LanguagesHelper();
 
 RoundedRectangleBorder kButtonOutlineShape = RoundedRectangleBorder(
   borderRadius: BorderRadius.circular(18.0),
-  side: BorderSide(color: Colors.white),
+  side: const BorderSide(color: Colors.white),
 );
 
 const kNameCountryTextStyle12 = TextStyle(

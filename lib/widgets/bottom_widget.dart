@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class BottomWidgetCountry extends StatefulWidget {
-  final newCases;
-  final newDeaths;
-  final totalConfirmed;
-  final totalRecovered;
-  final totalDeaths;
-  final dataNow;
+  final int newCases;
+  final int newDeaths;
+  final int totalConfirmed;
+  final int totalRecovered;
+  final int totalDeaths;
+  final String dataNow;
   final apiData;
 
   const BottomWidgetCountry({
@@ -32,27 +32,17 @@ class _BottomWidgetCountryState extends State<BottomWidgetCountry> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(languages.newCases(context) + ': ${widget.newCases}'),
-        Text(languages.newDeaths(context) + ': ${widget.newDeaths}'),
+        Text('${languages.newCases(context)}${': ${widget.newCases}'}'),
+        Text('${languages.newDeaths(context)}${': ${widget.newDeaths}'}'),
         SizedBox(
           width: double.infinity,
           height: 45.0,
-          child: OutlineButton(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Icon(
-                  FontAwesomeIcons.chartBar,
-                  color: Colors.lightBlueAccent,
-                ),
-                SizedBox(
-                  width: 10.0,
-                ),
-                Text(
-                  languages.charts(context),
-                  style: TextStyle(fontSize: 20.0),
-                ),
-              ],
+          child: OutlinedButton(
+            style: OutlinedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18.0),
+                side: const BorderSide(color: Colors.white),
+              ),
             ),
             onPressed: () {
               Navigator.push(
@@ -66,9 +56,22 @@ class _BottomWidgetCountryState extends State<BottomWidgetCountry> {
                 ),
               );
             },
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(18.0),
-                side: BorderSide(color: Colors.white)),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                const Icon(
+                  FontAwesomeIcons.chartBar,
+                  color: Colors.lightBlueAccent,
+                ),
+                const SizedBox(
+                  width: 10.0,
+                ),
+                Text(
+                  languages.charts(context),
+                  style: const TextStyle(fontSize: 20.0),
+                ),
+              ],
+            ),
           ),
         ),
       ],

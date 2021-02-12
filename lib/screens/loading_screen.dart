@@ -9,9 +9,9 @@ class LoadingScreen extends StatefulWidget {
 }
 
 class _LoadingScreenState extends State<LoadingScreen> {
-  void getCountryLive() async {
-    ApiModel apiModel = ApiModel();
-    var apiData = await apiModel.getCountryLive2();
+  Future<void> getCountryLive() async {
+    final apiModel = ApiModel();
+    final apiData = await apiModel.getCountryLive2();
 
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
       return HomeScreen(
@@ -28,7 +28,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: SpinKitPouringHourglass(
           color: Colors.blue,

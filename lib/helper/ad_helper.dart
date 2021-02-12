@@ -1,19 +1,21 @@
 import 'package:firebase_admob/firebase_admob.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_config/flutter_config.dart';
 
-const String kMyBannerId = 'ca-app-pub-2131192143907097/2085369645';
-const String kMyInterAd = 'ca-app-pub-2131192143907097/6216186345';
-const String kAppId = 'ca-app-pub-2131192143907097~8678698154';
+String kMyBannerId = '${FlutterConfig.get('AD_BANNER_ID')}';
+String kMyInterAd = '${FlutterConfig.get('AD_INTER_ID')}';
+String kAppId = '${FlutterConfig.get('AD_APP_ID')}';
 
 InterstitialAd interstitialAd;
 BannerAd bannerAd;
 
 InterstitialAd myInterstitial() {
   return InterstitialAd(
-    adUnitId: InterstitialAd.testAdUnitId, //kMyInterAd,
+    adUnitId: kMyInterAd,
     targetingInfo: kTargetingInfo,
     listener: (MobileAdEvent event) {
       if (event == MobileAdEvent.failedToLoad) {
-        interstitialAd..load();
+        interstitialAd.load();
       } else if (event == MobileAdEvent.closed) {
         //interstitialAd = myInterstitial()..load();
       }
@@ -21,44 +23,44 @@ InterstitialAd myInterstitial() {
   );
 }
 
-void myFirebaseAdInterInit() async {
+Future<void> myFirebaseAdInterInit() async {
   try {
     await abrirInter();
     interstitialAd
       ..load()
       ..show();
   } catch (e) {
-    print(e.toString());
+    debugPrint(e.toString());
   }
 }
 
 BannerAd myBannerAd() {
   return BannerAd(
-    adUnitId: BannerAd.testAdUnitId, //kMyBannerId,
+    adUnitId: kMyBannerId,
     targetingInfo: kTargetingInfo,
     size: AdSize.smartBanner,
     listener: (MobileAdEvent event) {
       if (event == MobileAdEvent.failedToLoad) {
-        bannerAd..load();
+        bannerAd.load();
       } else if (event == MobileAdEvent.closed) {
         bannerAd = myBannerAd()..load();
       }
-      print("InterstitialAd event is $event");
+      debugPrint("InterstitialAd event is $event");
     },
   );
 }
 
-void myFirebaseAdBannerInit() async {
+Future<void> myFirebaseAdBannerInit() async {
   try {
     await abrirBanner();
     bannerAd
       ..load()
       ..show(
-        anchorType: AnchorType.bottom,
         anchorOffset: 48.0,
-        horizontalCenterOffset: 0.0,
       );
-  } catch (e) {}
+  } catch (e) {
+    debugPrint(e.toString());
+  }
 }
 
 Future<void> abrirBanner() async {
@@ -70,7 +72,7 @@ Future<void> abrirInter() async {
   interstitialAd = myInterstitial()..load();
 }
 
-MobileAdTargetingInfo kTargetingInfo = MobileAdTargetingInfo(
+MobileAdTargetingInfo kTargetingInfo = const MobileAdTargetingInfo(
   keywords: [
     'Entertainment',
     'Saude',
@@ -85,7 +87,7 @@ MobileAdTargetingInfo kTargetingInfo = MobileAdTargetingInfo(
   childDirected: false,
 );
 
-void adDispose() async {
+Future<void> adDispose() async {
   if (bannerAd != null) {
     bannerAd.dispose();
     bannerAd = null;

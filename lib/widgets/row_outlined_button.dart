@@ -6,16 +6,16 @@ Widget rowOutlineButton(BuildContext context) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.center,
     children: <Widget>[
-      Icon(
+     const  Icon(
         FontAwesomeIcons.circleNotch,
         color: Colors.lightBlueAccent,
       ),
-      SizedBox(
+      const SizedBox(
         width: 10.0,
       ),
       Text(
         languages.update(context),
-        style: TextStyle(fontSize: 20.0),
+        style: const TextStyle(fontSize: 20.0),
       ),
     ],
   );

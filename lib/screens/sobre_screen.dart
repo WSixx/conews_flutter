@@ -5,7 +5,7 @@ class About extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('About'),
+        title: const Text('About'),
         centerTitle: true,
       ),
       body: Center(
@@ -13,7 +13,7 @@ class About extends StatelessWidget {
           padding: const EdgeInsets.all(30.0),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
+            children: const [
               Text(
                 'Made by: Lucas',
                 textAlign: TextAlign.center,

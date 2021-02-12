@@ -63,7 +63,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       bottomNavigationBar: BottomNavyBar(
         selectedIndex: _selectedPage,
-        showElevation: true,
         itemCornerRadius: 8,
         curve: Curves.easeInBack,
         onItemSelected: (int index) => setState(() {
@@ -72,35 +71,33 @@ class _HomeScreenState extends State<HomeScreen> {
         }),
         items: [
           BottomNavyBarItem(
-            icon: Icon(FontAwesomeIcons.globe),
-            title: Text('Global'),
+            icon: const Icon(FontAwesomeIcons.globe),
+            title: const Text('Global'),
             activeColor: Colors.red,
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
-            icon: Icon(FontAwesomeIcons.globeAmericas),
-            title: Text('Others'),
+            icon: const Icon(FontAwesomeIcons.globeAmericas),
+            title: const Text('Others'),
             activeColor: Colors.yellow[800],
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
-            icon: Icon(FontAwesomeIcons.globeAmericas),
-            title: Text('Brazil'),
+            icon: const Icon(FontAwesomeIcons.globeAmericas),
+            title: const Text('Brazil'),
             activeColor: Colors.green,
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
-            icon: Icon(FontAwesomeIcons.globeAmericas),
-            title: Text('USA'),
-            activeColor: Colors.blue,
+            icon: const Icon(FontAwesomeIcons.globeAmericas),
+            title: const Text('USA'),
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
-            icon: Icon(FontAwesomeIcons.addressBook),
-            title: Text(
+            icon: const Icon(FontAwesomeIcons.addressBook),
+            title: const Text(
               'About',
             ),
-            activeColor: Colors.blue,
             textAlign: TextAlign.center,
           ),
         ],

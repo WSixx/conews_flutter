@@ -4,8 +4,8 @@ import 'package:conews_flutter/utilities/constants.dart';
 import 'package:conews_flutter/utilities/language_helper.dart';
 import 'package:conews_flutter/widgets/app_bar.dart';
 import 'package:conews_flutter/widgets/bottom_widget.dart';
-import 'package:conews_flutter/widgets/myBox.dart';
-import 'package:conews_flutter/widgets/rowOutlineButton.dart';
+import 'package:conews_flutter/widgets/my_box.dart';
+import 'package:conews_flutter/widgets/row_outlined_button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -32,15 +32,15 @@ class _GlobalState extends State<Global> {
   bool updateUi2(dynamic apiData) {
     setState(() {
       if (apiData == null) {
-        return false;
+        return;
       }
-      totalRecuperados = apiData['Global']['TotalRecovered'];
-      pais = apiData['Global']['Country'];
-      totalConfirmados = apiData['Global']['TotalConfirmed'];
-      novosCasos = apiData['Global']['NewConfirmed'];
-      novasMortes = apiData['Global']['NewDeaths'];
-      totalMortes = apiData['Global']['TotalDeaths'];
-      dataAtual = apiData['Date'];
+      totalRecuperados = apiData['Global']['TotalRecovered'] as int;
+      pais = apiData['Global']['Country'] as String;
+      totalConfirmados = apiData['Global']['TotalConfirmed'] as int;
+      novosCasos = apiData['Global']['NewConfirmed'] as int;
+      novasMortes = apiData['Global']['NewDeaths'] as int;
+      totalMortes = apiData['Global']['TotalDeaths'] as int;
+      dataAtual = apiData['Date'] as String;
     });
     return true;
   }
@@ -96,20 +96,14 @@ class _GlobalState extends State<Global> {
             SizedBox(
               width: double.infinity,
               height: 40.0,
-              child: OutlineButton(
-                child: rowOutlineButton(context),
+              child: OutlinedButton(
                 onPressed: () async {
-                  var apiData = await apiModel.getCountryLive2();
+                  final apiData = await apiModel.getCountryLive2();
                   updateUi2(apiData);
                 },
-                shape: kButtonOutlineShape,
+                style: OutlinedButton.styleFrom(shape: kButtonOutlineShape),
+                child: rowOutlineButton(context),
               ),
-            ),
-            Text(
-              languages.updateBottom(context) +
-                  ': ' +
-                  dataAtual.substring(0, 10),
-              style: kTextStyle12,
             ),
           ],
         ),

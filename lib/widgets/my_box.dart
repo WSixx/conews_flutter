@@ -11,8 +11,8 @@ class MyBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var f = new NumberFormat("###,###,###", "fr");
-    return Container(
+    final f = NumberFormat("###,###,###", "fr");
+    return SizedBox(
       height: 90.0,
       child: Card(
         elevation: 5.0,
@@ -27,7 +27,7 @@ class MyBox extends StatelessWidget {
           ),
           title: Text(
             f.format(totalPassado),
-            style: TextStyle(fontSize: 24.0),
+            style: const TextStyle(fontSize: 24.0),
           ),
           subtitle: Text(title),
         ),

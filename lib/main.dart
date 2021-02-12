@@ -4,8 +4,13 @@ import 'package:conews_flutter/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_config/flutter_config.dart';
 
-void main() => runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await FlutterConfig.loadEnvVariables();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override
@@ -14,21 +19,20 @@ class MyApp extends StatelessWidget {
       create: (_) => ThemeNotifier(),
       child: Consumer<ThemeNotifier>(
           builder: (context, ThemeNotifier notifier, child) {
-        child:
         return MaterialApp(
-          localizationsDelegates: [
+          localizationsDelegates: const [
             AppLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
           ],
-          supportedLocales: [
-            const Locale('en', ''),
-            const Locale('pt', ''),
+          supportedLocales: const [
+            Locale('en', ''),
+            Locale('pt', ''),
           ],
           localeResolutionCallback: (locale, supportedLocales) {
             //check if the current user local is supported
             if (locale != null) {
-              for (var supportedLocale in supportedLocales) {
+              for (final supportedLocale in supportedLocales) {
                 if (supportedLocale.languageCode == locale.languageCode) {
                   return supportedLocale;
                 }

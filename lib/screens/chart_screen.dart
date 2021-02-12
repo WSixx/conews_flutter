@@ -5,9 +5,9 @@ import 'package:charts_flutter/flutter.dart' as charts;
 
 class ChartPage extends StatefulWidget {
   final Widget child;
-  final mortesConfirmadas;
-  final casosConfirmados;
-  final recuperadosConfirmados;
+  final int mortesConfirmadas;
+  final int casosConfirmados;
+  final int recuperadosConfirmados;
 
   const ChartPage(
       {this.child,
@@ -15,6 +15,7 @@ class ChartPage extends StatefulWidget {
       this.mortesConfirmadas,
       this.recuperadosConfirmados});
 
+  @override
   _ChartPageState createState() => _ChartPageState();
 }
 
@@ -24,23 +25,11 @@ class _ChartPageState extends State<ChartPage> {
     const Color(0xff02d39a),
   ];
 
-  /* @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: BarChart(
-        BarChartData(
-          alignment: BarChartAlignment.end,
-          backgroundColor: Colors.amber,
-        ),
-      ),
-    );
-  }
-}*/
   List<charts.Series<Covid, String>> _seriesData;
   List<charts.Series<Task, String>> seriesPieData;
 
-  generateData() {
-    var pieData = [
+  void generateData() {
+    final pieData = [
       Task(AppLocalizations.of(context).translate('cases'),
           widget.casosConfirmados, Colors.blue),
       Task(AppLocalizations.of(context).translate('chart_deaths'),
@@ -62,8 +51,8 @@ class _ChartPageState extends State<ChartPage> {
     );
   }
 
-  _generateData() {
-    var data1 = [
+  void _generateData() {
+    final data1 = [
       Covid(AppLocalizations.of(context).translate('chart_confirmed'),
           widget.casosConfirmados, Colors.amber),
       Covid(AppLocalizations.of(context).translate('chart_recovered'),
@@ -88,8 +77,8 @@ class _ChartPageState extends State<ChartPage> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    _seriesData = List<charts.Series<Covid, String>>();
-    seriesPieData = List<charts.Series<Task, String>>();
+    _seriesData = <charts.Series<Covid, String>>[];
+    seriesPieData = <charts.Series<Task, String>>[];
     _generateData();
     generateData();
   }
@@ -113,8 +102,8 @@ class _ChartPageState extends State<ChartPage> {
           child: Scaffold(
             backgroundColor: Colors.white,
             appBar: AppBar(
-              backgroundColor: Color(0xff1976d2),
-              bottom: TabBar(
+              backgroundColor: const Color(0xff1976d2),
+              bottom: const TabBar(
                 indicatorColor: Color(0xff9962D0),
                 tabs: [
                   Tab(
@@ -130,73 +119,72 @@ class _ChartPageState extends State<ChartPage> {
             body: TabBarView(
               children: [
                 Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Container(
-                    child: Center(
-                      child: Column(
-                        children: <Widget>[
-                          Text(
-                            'COVID - 19',
-                            style: TextStyle(
-                                fontSize: 24.0, fontWeight: FontWeight.bold),
-                          ),
-                          Expanded(
-                            child: charts.BarChart(
-                              _seriesData,
-                              animate: true,
-                              barGroupingType: charts.BarGroupingType.grouped,
-                              animationDuration: Duration(seconds: 2),
-                              barRendererDecorator: charts.BarLabelDecorator(
-                                insideLabelStyleSpec: new charts.TextStyleSpec(
-                                    fontSize: 14, fontWeight: 'bold'),
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                    child: Column(
+                      children: <Widget>[
+                        const Text(
+                          'COVID - 19',
+                          style: TextStyle(
+                              fontSize: 24.0, fontWeight: FontWeight.bold),
+                        ),
+                        Expanded(
+                          child: charts.BarChart(
+                            _seriesData,
+                            animate: true,
+                            barGroupingType: charts.BarGroupingType.grouped,
+                            animationDuration: const Duration(seconds: 2),
+                            barRendererDecorator: charts.BarLabelDecorator(
+                              insideLabelStyleSpec: const charts.TextStyleSpec(
+                                fontSize: 14,
+                                fontWeight: 'bold',
                               ),
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Container(
-                    child: Center(
-                      child: Column(
-                        children: <Widget>[
-                          Text(
-                            'COVID-19 TEMPO',
-                            style: TextStyle(
-                                fontSize: 24.0, fontWeight: FontWeight.bold),
-                          ),
-                          Expanded(
-                            child: charts.PieChart(
-                              seriesPieData,
-                              animate: true,
-                              animationDuration: Duration(seconds: 2),
-                              behaviors: [
-                                charts.DatumLegend(
-                                  outsideJustification:
-                                      charts.OutsideJustification.startDrawArea,
-                                  horizontalFirst: false,
-                                  desiredMaxRows: 3,
-                                  cellPadding: new EdgeInsets.only(
-                                      right: 4.0, bottom: 4.0),
-                                  entryTextStyle: charts.TextStyleSpec(
-                                      color: charts.MaterialPalette.black,
-                                      fontSize: 16),
+                  padding: const EdgeInsets.all(8.0),
+                  child: Center(
+                    child: Column(
+                      children: <Widget>[
+                        const Text(
+                          'COVID-19 TEMPO',
+                          style: TextStyle(
+                              fontSize: 24.0, fontWeight: FontWeight.bold),
+                        ),
+                        Expanded(
+                          child: charts.PieChart(
+                            seriesPieData,
+                            animate: true,
+                            animationDuration: const Duration(seconds: 2),
+                            behaviors: [
+                              charts.DatumLegend(
+                                outsideJustification:
+                                    charts.OutsideJustification.startDrawArea,
+                                horizontalFirst: false,
+                                desiredMaxRows: 3,
+                                cellPadding: const EdgeInsets.only(
+                                    right: 4.0, bottom: 4.0),
+                                entryTextStyle: const charts.TextStyleSpec(
+                                  color: charts.MaterialPalette.black,
+                                  fontSize: 16,
                                 ),
-                              ],
-                              defaultRenderer: charts.ArcRendererConfig(
-                                arcRendererDecorators: [
-                                  charts.ArcLabelDecorator(
-                                      labelPosition:
-                                          charts.ArcLabelPosition.outside),
-                                ],
                               ),
+                            ],
+                            defaultRenderer: charts.ArcRendererConfig(
+                              arcRendererDecorators: [
+                                charts.ArcLabelDecorator(
+                                    labelPosition:
+                                        charts.ArcLabelPosition.outside),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
                   ),
                 ),

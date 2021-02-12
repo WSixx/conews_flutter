@@ -5,16 +5,16 @@ const countryLiveUrl =
 const countryLiveUrl2 = 'https://api.covid19api.com/summary';
 
 class ApiModel {
-  Future<dynamic> getCountryLive() async {
-    var url = '$countryLiveUrl';
-    NetworkHelper networkHelper = NetworkHelper(url);
-    var apiData = await networkHelper.getData();
+  Future getCountryLive() async {
+    const url = countryLiveUrl;
+    final NetworkHelper networkHelper = NetworkHelper(url);
+    final apiData = await networkHelper.getData();
     return apiData;
   }
 
-  Future<dynamic> getCountryLive2() async {
-    NetworkHelper networkHelper = NetworkHelper('$countryLiveUrl2');
-    var apiData = await networkHelper.getData();
+  Future getCountryLive2() async {
+    final NetworkHelper networkHelper = NetworkHelper(countryLiveUrl2);
+    final apiData = await networkHelper.getData();
     return apiData;
   }
 }

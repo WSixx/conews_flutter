@@ -1,12 +1,11 @@
-import 'package:conews_flutter/helper/ad_helper.dart';
 import 'package:conews_flutter/services/api_data.dart';
 import 'package:conews_flutter/utilities/constants.dart';
-import 'package:conews_flutter/utilities/getJsonApi.dart';
+import 'package:conews_flutter/utilities/get_json_api.dart';
 import 'package:conews_flutter/utilities/language_helper.dart';
 import 'package:conews_flutter/widgets/app_bar.dart';
 import 'package:conews_flutter/widgets/bottom_widget.dart';
-import 'package:conews_flutter/widgets/myBox.dart';
-import 'package:conews_flutter/widgets/rowOutlineButton.dart';
+import 'package:conews_flutter/widgets/my_box.dart';
+import 'package:conews_flutter/widgets/row_outlined_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -77,20 +76,14 @@ class _BrazilState extends State<Brazil> {
             SizedBox(
               width: double.infinity,
               height: 40.0,
-              child: OutlineButton(
-                child: rowOutlineButton(context),
+              child: OutlinedButton(
                 onPressed: () async {
-                  var apiData = await apiModel.getCountryLive2();
+                  final apiData = await apiModel.getCountryLive2();
                   getJsonApi.updateUi2(apiData);
                 },
-                shape: kButtonOutlineShape,
+                style: OutlinedButton.styleFrom(shape: kButtonOutlineShape),
+                child: rowOutlineButton(context),
               ),
-            ),
-            Text(
-              languages.updateBottom(context) +
-                  ': ' +
-                  getJsonApi.dataNow.substring(0, 10),
-              style: kTextStyle12,
             ),
           ],
         ),

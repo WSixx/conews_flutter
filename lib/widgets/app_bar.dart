@@ -16,7 +16,6 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      //titleSpacing: 10.0,
       elevation: 10.0,
       leading: Icon(
         icone,
@@ -27,10 +26,10 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
         title,
         textAlign: TextAlign.center,
       ),
-      centerTitle: false,
+      centerTitle: true,
       backgroundColor: backgroundColor,
       actions: <Widget>[
-        Icon(FontAwesomeIcons.lightbulb),
+        const Icon(FontAwesomeIcons.lightbulb),
         Consumer<ThemeNotifier>(
           builder: (context, notifier, child) => Switch(
             onChanged: (val) {
@@ -44,5 +43,5 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => new Size.fromHeight(appBar.preferredSize.height);
+  Size get preferredSize => Size.fromHeight(appBar.preferredSize.height);
 }
