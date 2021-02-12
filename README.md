@@ -1,16 +1,16 @@
 # conews_flutter
 
-A new Flutter application.
+You can see the data on COVID-19 updated daily. Data on recovered, infected and deaths. Data from more than 180 countries updated daily
+<br>
+<br>
+<br>
+![Image](https://img.samsungapps.com/content/muqspbil96/2021/0128/ENG/ScreenImage_20210128160647353.png)
+<br>
+<br>
+<br>
+![Image](https://img.samsungapps.com/content/muqspbil96/2021/0128/ENG/ScreenImage_20210128160647251.png)
+<br>
+<br>
+<br>
+![Image](https://img.samsungapps.com/content/muqspbil96/2021/0128/ENG/ScreenImage_20210128160646846.png)
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
